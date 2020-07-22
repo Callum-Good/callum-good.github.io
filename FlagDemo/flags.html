@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flags</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="flagstyles.css">
+</head>
+
+<body>
+    <div id="app" class="container" @click="findImage()">
+        <hr>
+        <h1>Select a country from the dropdown list</h1>
+        <select v-model="selected">
+            <option value="0" disabled>
+                Select a country</option>
+            <option v-for="c in countries" v-bind:value="c.Code">
+                {{c.Code}}</option>
+        </select><br><hr>
+        <div>
+        <h2>{{ index() > -1?countries[index()].Name:""}}</h2><br>
+        <p class="font-weight-bold">Population:<br>{{ index() > -1?countries[index()].Population:""}}</p>
+        <p class="font-weight-bold">Surface Area:<br>{{ index() > -1?countries[index()].SurfaceArea:""}}</p>
+        <p class="font-weight-bold">Continent:<br>{{ index() > -1?countries[index()].Continent:""}}</p>
+        <p class="font-weight-bold">Region:<br>{{ index() > -1?countries[index()].Region:""}}</p>
+        <p class="font-weight-bold">Government Form:<br>{{ index() > -1?countries[index()].GovernmentForm:""}}</p>
+        <br><img v-bind:src="flagfile" @error="altimage">
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.js">
+    </script>
+    <script src="flags.js">
+        
+    </script>
+</body>
+
+</html>
